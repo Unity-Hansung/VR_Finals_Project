@@ -5,8 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     Rigidbody rb;
-    [Header("Move")]
 
+    [Header("Move")]
     [SerializeField] float moveSpeed;
     float h;
     float v;
@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
 
     float yRotation;
     float xRotation;
+
+    float isRunning = 1.0f;
     Camera cam;
 
     void Start()
@@ -24,12 +26,12 @@ public class Player : MonoBehaviour
         Cursor.visible = false;                     // 마우스 커서를 보이지 않도록 설정
 
         rb = GetComponent<Rigidbody>();             // Rigidbody 컴포넌트 가져오기
-        rb.freezeRotation = true;                   // Rigidbody의 회전을 고정하여 물리 연산에 영향을 주지 않도록 설정
+        //rb.freezeRotation = true;                   // Rigidbody의 회전을 고정하여 물리 연산에 영향을 주지 않도록 설정
 
         cam = Camera.main;                          // 메인 카메라를 할당
     }
 
-    void Update()
+    void FixedUpdate()
     {
         Rotate();
         Move();
@@ -37,8 +39,8 @@ public class Player : MonoBehaviour
 
     void Rotate()
     {
-        float mouseX = Input.GetAxisRaw("Mouse X") * mouseSpeed * Time.deltaTime;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * mouseSpeed * Time.deltaTime;
+        float mouseX = Input.GetAxisRaw("Mouse X") * mouseSpeed * Time.fixedDeltaTime;
+        float mouseY = Input.GetAxisRaw("Mouse Y") * mouseSpeed * Time.fixedDeltaTime;
 
         yRotation += mouseX;    // 마우스 X축 입력에 따라 수평 회전 값을 조정
         xRotation -= mouseY;    // 마우스 Y축 입력에 따라 수직 회전 값을 조정
@@ -58,6 +60,12 @@ public class Player : MonoBehaviour
         Vector3 moveVec = transform.forward * v + transform.right * h;
 
         // 이동 벡터를 정규화하여 이동 속도와 시간 간격을 곱한 후 현재 위치에 더함
-        transform.position += moveVec.normalized * moveSpeed * Time.deltaTime;
+        Vector3 movement = moveVec.normalized * moveSpeed * Time.deltaTime;
+        transform.position += movement*isRunning;
+    }
+
+    public void setRunning(float isRunning)
+    {
+        this.isRunning = isRunning;
     }
 }
