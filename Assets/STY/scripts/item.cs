@@ -8,6 +8,8 @@ public class item : MonoBehaviour
     Player player;
 
     [SerializeField] int scorePlus = 1;
+    [SerializeField] float increaseRunning = 2f;
+    [SerializeField] float runningCoolTime = 0.5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,7 @@ public class item : MonoBehaviour
         if(other.CompareTag("basicShard"))
         {
             //플레이어의 점수가 1추가
+            other.enabled = false;
             gm.addScore(scorePlus);
             Destroy(other.gameObject);
             Debug.Log(gm.getScore());
@@ -34,9 +37,10 @@ public class item : MonoBehaviour
         //추가 기능 : 이속추가,충돌 무시 아이템 기능
         else if(other.CompareTag("speedShard"))
         {
+            other.enabled = false;
             gm.addScore(scorePlus);
             Destroy (other.gameObject);
-            player.setRunning(2.0f);
+            player.ApplySpeed(increaseRunning, runningCoolTime);
             Debug.Log(gm.getScore());
         }//원래 속도로 돌아오게끔
     }

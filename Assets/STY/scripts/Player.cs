@@ -18,6 +18,9 @@ public class Player : MonoBehaviour
     float xRotation;
 
     float isRunning = 1.0f;
+
+    Coroutine checkCor;
+
     Camera cam;
 
     void Start()
@@ -57,6 +60,7 @@ public class Player : MonoBehaviour
         v = Input.GetAxisRaw("Vertical");   // 수직 이동 입력 값
 
         // 입력에 따라 이동 방향 벡터 계산
+        //좌우 이동 계상(근데 이러면 대각선 방향으로 더 멀리 계산됨 -> 정규화 사용)
         Vector3 moveVec = transform.forward * v + transform.right * h;
 
         // 이동 벡터를 정규화하여 이동 속도와 시간 간격을 곱한 후 현재 위치에 더함
@@ -67,5 +71,21 @@ public class Player : MonoBehaviour
     public void setRunning(float isRunning)
     {
         this.isRunning = isRunning;
+    }
+
+    public void ApplySpeed(float speed, float time )
+    {
+        //이미 빨라진 상태 -> 코루틴 재시작(지속시간 증가)
+        if(checkCor != null) StopCoroutine(checkCor);
+
+        checkCor = StartCoroutine(SpeedRoutine(speed, time));
+    }
+
+    IEnumerator SpeedRoutine(float speed, float time)
+    {
+        setRunning(speed);
+        yield return new WaitForSeconds(time);
+
+        setRunning(1);
     }
 }

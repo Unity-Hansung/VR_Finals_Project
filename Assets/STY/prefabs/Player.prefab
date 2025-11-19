@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3171345708386905215}
   - component: {fileID: 7267062524596404834}
   m_Layer: 0
-  m_Name: Player
+  m_Name: model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,7 +96,6 @@ GameObject:
   - component: {fileID: 7622143853790894203}
   - component: {fileID: 1913491468804156933}
   - component: {fileID: 2089855480002349671}
-  - component: {fileID: 7433016731299808370}
   m_Layer: 0
   m_Name: arm1
   m_TagString: Untagged
@@ -169,29 +168,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &7433016731299808370
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2897573835968802528}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &3855549960650358103
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,7 +306,6 @@ GameObject:
   - component: {fileID: 1378209231893986684}
   - component: {fileID: 5995627854891764838}
   - component: {fileID: 35289932428489455}
-  - component: {fileID: 6354704853924033785}
   m_Layer: 0
   m_Name: arm2
   m_TagString: Untagged
@@ -403,29 +378,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &6354704853924033785
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5688633003913354392}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &8461294656874714817
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,10 +434,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1.9915082
+  m_Radius: 0.48473495
+  m_Height: 1.9679198
   m_Direction: 1
-  m_Center: {x: 0, y: -0.0023502111, z: 0}
+  m_Center: {x: -0.0024749043, y: -0.014144421, z: 8.287815e-12}
 --- !u!54 &1293267807856874557
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -526,7 +478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  mouseSpeed: 700
+  mouseSpeed: 500
 --- !u!114 &-907280319364493647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -540,3 +492,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scorePlus: 1
+  increaseRunning: 2
+  runningCoolTime: 0.5
