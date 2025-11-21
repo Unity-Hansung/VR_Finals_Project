@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     Rigidbody rb;
+    Collider col;
 
     [Header("Move")]
     [SerializeField] float moveSpeed;
@@ -23,12 +24,17 @@ public class Player : MonoBehaviour
 
     Camera cam;
 
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();             // Rigidbody 컴포넌트 가져오기
+        col = GetComponent<Collider>();
+       
+    }
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;   // 마우스 커서를 화면 안에서 고정
         Cursor.visible = false;                     // 마우스 커서를 보이지 않도록 설정
 
-        rb = GetComponent<Rigidbody>();             // Rigidbody 컴포넌트 가져오기
         //rb.freezeRotation = true;                   // Rigidbody의 회전을 고정하여 물리 연산에 영향을 주지 않도록 설정
 
         cam = Camera.main;                          // 메인 카메라를 할당
@@ -87,5 +93,12 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(time);
 
         setRunning(1);
+    }
+
+    public IEnumerator ColliderRoutine(float ignoreTime)
+    {
+        col.isTrigger = true;
+        yield return new WaitForSeconds(ignoreTime);
+        col.isTrigger = false;
     }
 }

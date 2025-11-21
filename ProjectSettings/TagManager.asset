@@ -7,14 +7,16 @@ TagManager:
   - item
   - basicShard
   - speedShard
+  - colliderShard
+  - monster
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - items
   - Water
   - UI
-  - 
+  - monster
   - 
   - 
   - 

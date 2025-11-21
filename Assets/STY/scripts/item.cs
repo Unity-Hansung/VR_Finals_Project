@@ -10,6 +10,7 @@ public class item : MonoBehaviour
     [SerializeField] int scorePlus = 1;
     [SerializeField] float increaseRunning = 2f;
     [SerializeField] float runningCoolTime = 0.5f;
+    [SerializeField] float ignoringCoolTime = 1.5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +31,7 @@ public class item : MonoBehaviour
         {
             //플레이어의 점수가 1추가
             other.enabled = false;
-            gm.addScore(scorePlus);
+            gm.AddScore(scorePlus);
             Destroy(other.gameObject);
             Debug.Log(gm.getScore());
         }
@@ -38,10 +39,19 @@ public class item : MonoBehaviour
         else if(other.CompareTag("speedShard"))
         {
             other.enabled = false;
-            gm.addScore(scorePlus);
+            gm.AddScore(scorePlus);
             Destroy (other.gameObject);
             player.ApplySpeed(increaseRunning, runningCoolTime);
             Debug.Log(gm.getScore());
         }//원래 속도로 돌아오게끔
+        else if(other.CompareTag("colliderShard"))
+        {
+            other.enabled = false;
+            gm.AddScore(scorePlus);
+            Destroy (other.gameObject);
+            player.ApplySpeed(increaseRunning,runningCoolTime);
+            player.StartCoroutine(player.ColliderRoutine(ignoringCoolTime));
+            Debug.Log(gm.getScore());
+        }
     }
 }

@@ -461,7 +461,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 80
   m_CollisionDetection: 0
@@ -494,3 +494,4 @@ MonoBehaviour:
   scorePlus: 1
   increaseRunning: 2
   runningCoolTime: 0.5
+  ignoringCoolTime: 1.5

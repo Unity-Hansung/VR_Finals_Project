@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 493002554418396345}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: speedShard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 7690332345709910114}
   - component: {fileID: 5218921086466935944}
   - component: {fileID: 2004983763028153932}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: model
   m_TagString: speedShard
   m_Icon: {fileID: 0}
