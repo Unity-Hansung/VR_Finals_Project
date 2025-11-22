@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 410558827042120076}
   - component: {fileID: 4954058904530381120}
   - component: {fileID: 7030009404010324658}
-  m_Layer: 0
+  - component: {fileID: 9013422129519744228}
+  - component: {fileID: 7911590224359879419}
+  m_Layer: 6
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,6 +69,40 @@ MonoBehaviour:
   m_YawDamping: 0
   m_RollDamping: 0
   m_AngularDamping: 0
+--- !u!114 &9013422129519744228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501021746919746336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 2
+  m_FrequencyGain: 2
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
+--- !u!114 &7911590224359879419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501021746919746336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 0}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 1
+  m_FrequencyGain: 1
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &2589723972219948648
 GameObject:
   m_ObjectHideFlags: 0
@@ -77,7 +113,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4124467988170600963}
   - component: {fileID: 5608734298360690044}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Virtual Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,13 +187,13 @@ GameObject:
   - component: {fileID: 7444618216588169515}
   - component: {fileID: 6854905702913448100}
   - component: {fileID: 3270059595471664112}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Monster
   m_TagString: monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1307141778418641414
 Transform:
   m_ObjectHideFlags: 0
@@ -190,7 +226,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -232,6 +268,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89361797b9242a94e946c216b2d95377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monCam: {fileID: 2589723972219948648}
+  playerRenderer: {fileID: 0}
+  playerArm1: {fileID: 0}
+  playerArm2: {fileID: 0}
 --- !u!1 &7555561281939656731
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,7 +283,7 @@ GameObject:
   - component: {fileID: 9056606111883097583}
   - component: {fileID: 7276775933159402532}
   - component: {fileID: 4577848646958972933}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
