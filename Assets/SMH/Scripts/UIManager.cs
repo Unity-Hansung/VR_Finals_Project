@@ -1,27 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro.Examples;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
     AudioManager audioManager;
+    CameraRotateController cameraController;
+    [SerializeField] GameObject mainUI;
+    [SerializeField] GameObject optionUI;
 
     private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        cameraController = Camera.main.GetComponent<CameraRotateController>();
     }
 
     // MainMenu Method
@@ -33,9 +26,22 @@ public class UIManager : MonoBehaviour
     public void OptionBtn()
     {
         audioManager.PlaySFX(audioManager.SFX);
+        mainUI.SetActive(false);
+        cameraController.SetTargetRotation(new Vector3(0f, -38f, 0f));
+        optionUI.SetActive(true);
     }
     public void QuitBtn()
     {
+        audioManager.PlaySFX(audioManager.SFX);
         Application.Quit();
+    }
+
+    // Option Method
+    public void CloseOptionBtn()
+    {
+        audioManager.PlaySFX(audioManager.SFX);
+        optionUI.SetActive(false);
+        cameraController.SetDefaultRotation();
+        mainUI.SetActive(true);
     }
 }
