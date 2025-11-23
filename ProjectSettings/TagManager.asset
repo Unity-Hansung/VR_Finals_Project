@@ -4,16 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-
-  - Audio
-
-  - item
   - basicShard
   - speedShard
   - colliderShard
   - monster
   - Button
-
   layers:
   - Default
   - TransparentFX
