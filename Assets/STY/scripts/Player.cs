@@ -1,0 +1,132 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Experimental.AI;
+
+public class Player : MonoBehaviour
+{
+    Rigidbody rb;
+    Collider col;
+
+    [Header("Move")]
+    [SerializeField] float moveSpeed;
+    float h;
+    float v;
+
+    [Header("Mouse")]
+    [SerializeField] float mouseSpeed;
+
+    [Header("Button")]
+    [SerializeField] GameObject button;
+
+    float yRotation;
+    float xRotation;
+
+    float isRunning = 1.0f;
+
+    Coroutine checkCor;
+
+    Camera cam;
+
+    GameManager gm;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();             // Rigidbody 컴포넌트 가져오기
+        col = GetComponent<Collider>();
+       
+    }
+    void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;   // 마우스 커서를 화면 안에서 고정
+        Cursor.visible = false;                     // 마우스 커서를 보이지 않도록 설정
+
+        //rb.freezeRotation = true;                   // Rigidbody의 회전을 고정하여 물리 연산에 영향을 주지 않도록 설정
+        gm = FindFirstObjectByType<GameManager>();                                                                                              
+                                                                                                                        
+        cam = Camera.main;                          // 메인 카메라를 할당
+    }
+
+    void FixedUpdate()
+    {
+        Rotate();
+        Move();
+    }
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            RaycastHit hit;
+
+            if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, 
+                out hit) && hit.collider.gameObject == button)
+            {
+                gm.setCheck(false);
+                Debug.Log("click button");
+            }
+
+        }
+    }
+
+    void Rotate()
+    {
+        float mouseX = Input.GetAxisRaw("Mouse X") * mouseSpeed * Time.fixedDeltaTime;
+        float mouseY = Input.GetAxisRaw("Mouse Y") * mouseSpeed * Time.fixedDeltaTime;
+
+        yRotation += mouseX;    // 마우스 X축 입력에 따라 수평 회전 값을 조정
+        xRotation -= mouseY;    // 마우스 Y축 입력에 따라 수직 회전 값을 조정
+
+        xRotation = Mathf.Clamp(xRotation, -70f, 20f);  // 수직 회전 값을 -90도에서 90도 사이로 제한
+
+        cam.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0); // 카메라의 회전을 조절
+        transform.rotation = Quaternion.Euler(0, yRotation, 0);             // 플레이어 캐릭터의 회전을 조절
+    }
+
+    void Move()
+    {
+        h = Input.GetAxisRaw("Horizontal"); // 수평 이동 입력 값
+        v = Input.GetAxisRaw("Vertical");   // 수직 이동 입력 값
+
+        // 입력에 따라 이동 방향 벡터 계산
+        //좌우 이동 계상(근데 이러면 대각선 방향으로 더 멀리 계산됨 -> 정규화 사용)
+        Vector3 moveVec = transform.forward * v + transform.right * h;
+
+        // 이동 벡터를 정규화하여 이동 속도와 시간 간격을 곱한 후 현재 위치에 더함
+        Vector3 movement = moveVec.normalized * moveSpeed * Time.deltaTime;
+        transform.position += movement*isRunning;
+    }
+
+    public void setRunning(float isRunning)
+    {
+        this.isRunning = isRunning;
+    }
+
+    public void ApplySpeed(float speed, float time )
+    {
+        //이미 빨라진 상태 -> 코루틴 재시작(지속시간 증가)
+        if(checkCor != null) StopCoroutine(checkCor);
+
+        checkCor = StartCoroutine(SpeedRoutine(speed, time));
+    }
+
+    IEnumerator SpeedRoutine(float speed, float time)
+    {
+        setRunning(speed);
+        yield return new WaitForSeconds(time);
+
+        setRunning(1);
+    }
+
+    public IEnumerator throughMonster(float time)
+    {
+        int playerLayer = LayerMask.NameToLayer("playerBody");
+        int monsterLayer = LayerMask.NameToLayer("monster");
+
+        Physics.IgnoreLayerCollision(playerLayer, monsterLayer,true);
+        yield return new WaitForSeconds(time);
+        Physics.IgnoreLayerCollision(playerLayer, monsterLayer, false);
+    }
+
+
+}
