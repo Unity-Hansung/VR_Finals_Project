@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.AI;
 
 public class Player : MonoBehaviour
 {
@@ -117,11 +118,14 @@ public class Player : MonoBehaviour
         setRunning(1);
     }
 
-    public IEnumerator ColliderRoutine(float ignoreTime)
+    public IEnumerator throughMonster(float time)
     {
-        col.isTrigger = true;
-        yield return new WaitForSeconds(ignoreTime);
-        col.isTrigger = false;
+        int playerLayer = LayerMask.NameToLayer("playerBody");
+        int monsterLayer = LayerMask.NameToLayer("monster");
+
+        Physics.IgnoreLayerCollision(playerLayer, monsterLayer,true);
+        yield return new WaitForSeconds(time);
+        Physics.IgnoreLayerCollision(playerLayer, monsterLayer, false);
     }
 
 

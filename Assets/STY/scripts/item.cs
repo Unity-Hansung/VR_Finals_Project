@@ -10,7 +10,8 @@ public class item : MonoBehaviour
     [SerializeField] int scorePlus = 1;
     [SerializeField] float increaseRunning = 2f;
     [SerializeField] float runningCoolTime = 0.5f;
-    [SerializeField] float ignoringCoolTime = 1.5f;
+    [SerializeField] float ignoreMonsterTime = 3f;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -50,7 +51,7 @@ public class item : MonoBehaviour
             gm.AddScore(scorePlus);
             Destroy (other.gameObject);
             player.ApplySpeed(increaseRunning,runningCoolTime);
-            player.StartCoroutine(player.ColliderRoutine(ignoringCoolTime));
+            player.StartCoroutine(player.throughMonster(ignoreMonsterTime));
             Debug.Log(gm.getScore());
         }
     }
