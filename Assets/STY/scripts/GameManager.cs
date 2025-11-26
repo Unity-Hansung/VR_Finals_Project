@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject monster2;
     [SerializeField] int monsterComingScore1;
     [SerializeField] int monsterComingScore2;
+    [SerializeField] int finishScore;
 
     bool btnCheck = true;
     // Start is called before the first frame update
@@ -32,6 +33,10 @@ public class GameManager : MonoBehaviour
         {
             monster2.SetActive(true);
             Debug.Log("monster2 is coming!");
+        }
+        if(score >= finishScore)
+        {
+            Debug.Log("final gate open!");
         }
     }
 

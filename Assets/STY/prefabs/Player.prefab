@@ -422,7 +422,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8461294656874714817}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: c84834da3d071484a9c346e341fb2e94, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -463,8 +463,8 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 80
-  m_CollisionDetection: 0
+  m_Constraints: 84
+  m_CollisionDetection: 2
 --- !u!114 &5082828108240839255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -479,6 +479,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   mouseSpeed: 500
+  button: {fileID: 0}
+  warmupTime: 0.2
 --- !u!114 &-907280319364493647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -494,4 +496,4 @@ MonoBehaviour:
   scorePlus: 1
   increaseRunning: 2
   runningCoolTime: 0.5
-  ignoringCoolTime: 1.5
+  ignoreMonsterTime: 3

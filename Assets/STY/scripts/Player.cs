@@ -19,6 +19,9 @@ public class Player : MonoBehaviour
     [Header("Button")]
     [SerializeField] GameObject button;
 
+    [Header("MouseControl")]
+    [SerializeField] float warmupTime = 0.2f;
+
     float yRotation;
     float xRotation;
 
@@ -41,20 +44,26 @@ public class Player : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;   // 마우스 커서를 화면 안에서 고정
         Cursor.visible = false;                     // 마우스 커서를 보이지 않도록 설정
 
+
         //rb.freezeRotation = true;                   // Rigidbody의 회전을 고정하여 물리 연산에 영향을 주지 않도록 설정
         gm = FindFirstObjectByType<GameManager>();                                                                                              
                                                                                                                         
         cam = Camera.main;                          // 메인 카메라를 할당
+        
     }
-
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        Rotate();
         Move();
     }
 
     private void Update()
     {
+        if(warmupTime > 0.0f) //마우스 시작후 돌아가는거 방지
+        {
+            warmupTime -= Time.deltaTime;
+            return;
+        }
+        Rotate();
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
@@ -62,6 +71,8 @@ public class Player : MonoBehaviour
             if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, 
                 out hit) && hit.collider.gameObject == button)
             {
+                ButtonAni btn = hit.collider.GetComponent<ButtonAni>(); //충돌한 물체의 스크립트를 가져오기
+                btn.PlayAin();
                 gm.setCheck(false);
                 Debug.Log("click button");
             }
@@ -71,8 +82,8 @@ public class Player : MonoBehaviour
 
     void Rotate()
     {
-        float mouseX = Input.GetAxisRaw("Mouse X") * mouseSpeed * Time.fixedDeltaTime;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * mouseSpeed * Time.fixedDeltaTime;
+        float mouseX = Input.GetAxisRaw("Mouse X") * mouseSpeed * Time.deltaTime;
+        float mouseY = Input.GetAxisRaw("Mouse Y") * mouseSpeed * Time.deltaTime;
 
         yRotation += mouseX;    // 마우스 X축 입력에 따라 수평 회전 값을 조정
         xRotation -= mouseY;    // 마우스 Y축 입력에 따라 수직 회전 값을 조정
@@ -93,8 +104,9 @@ public class Player : MonoBehaviour
         Vector3 moveVec = transform.forward * v + transform.right * h;
 
         // 이동 벡터를 정규화하여 이동 속도와 시간 간격을 곱한 후 현재 위치에 더함
-        Vector3 movement = moveVec.normalized * moveSpeed * Time.deltaTime;
-        transform.position += movement*isRunning;
+        Vector3 movement = moveVec.normalized * moveSpeed *isRunning;
+        
+        rb.velocity = movement; //갑작스러운 속도를 내도 벽을 통과하지 못하도록 
     }
 
     public void setRunning(float isRunning)
@@ -125,8 +137,8 @@ public class Player : MonoBehaviour
 
         Physics.IgnoreLayerCollision(playerLayer, monsterLayer,true);
         yield return new WaitForSeconds(time);
-        Physics.IgnoreLayerCollision(playerLayer, monsterLayer, false);
+        Physics.IgnoreLayerCollision(playerLayer, monsterLayer,false);
     }
 
-
+   
 }

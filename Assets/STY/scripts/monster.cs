@@ -18,7 +18,7 @@ public class monster : MonoBehaviour
     NavMeshAgent agent;
 
     bool catchPlayer = true;
-
+    
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -38,8 +38,20 @@ public class monster : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        
         if(other.gameObject.CompareTag("Player"))
         {
+               
+            GameObject[] allMonsters = GameObject.FindGameObjectsWithTag("monster");
+
+            Debug.Log("monster caught Player!");
+            foreach(GameObject monster in allMonsters)
+            {
+                if(monster != this.gameObject)
+                {
+                    monster.SetActive(false);
+                }
+            }
             if(playerRenderer != null)
             {
                 playerRenderer.enabled = false;
