@@ -241,7 +241,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 255
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -479,6 +479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   mouseSpeed: 500
+  button: {fileID: 0}
 --- !u!114 &-907280319364493647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -494,4 +495,4 @@ MonoBehaviour:
   scorePlus: 1
   increaseRunning: 2
   runningCoolTime: 0.5
-  ignoringCoolTime: 1.5
+  ignoreMonsterTime: 3

@@ -11,6 +11,13 @@ public class VolumeSettings : MonoBehaviour
     [SerializeField] Slider BGMSlider;
     [SerializeField] Slider SFXSlider;
 
+    private void Awake()
+    {
+        BGMSlider = GameObject.Find("BgmSlider").GetComponent<Slider>();
+        SFXSlider = GameObject.Find("SfxSlider").GetComponent<Slider>();
+        GameObject.Find("OptionMenu").SetActive(false);
+    }
+
     private void Start()
     {
         if (PlayerPrefs.HasKey("BGMVolume"))

@@ -21,7 +21,7 @@ public class UIManager : MonoBehaviour
     public void StartBtn()
     {
         audioManager.PlaySFX(audioManager.SFX);
-        SceneManager.LoadScene("TestScene");
+        SceneManager.LoadScene("STY_Scene");
     }
     public void OptionBtn()
     {
