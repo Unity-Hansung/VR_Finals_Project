@@ -33,11 +33,13 @@ public class Player : MonoBehaviour
 
     GameManager gm;
 
+    [SerializeField]Animator animator;
+    float moveState = 0;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();             // Rigidbody 컴포넌트 가져오기
         col = GetComponent<Collider>();
-       
     }
     void Start()
     {
@@ -54,16 +56,24 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
+        if (warmupTime > 0.0f) //마우스 시작후 돌아가는거 방지
+        {
+            warmupTime -= Time.fixedDeltaTime;
+            return;
+        }
+        Rotate();
     }
 
     private void Update()
     {
+        /*
         if(warmupTime > 0.0f) //마우스 시작후 돌아가는거 방지
         {
             warmupTime -= Time.deltaTime;
             return;
         }
         Rotate();
+        */
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
@@ -78,12 +88,22 @@ public class Player : MonoBehaviour
             }
 
         }
+
+        // 애니메이션 상태 전환 로직 처리
+        if (moveState != 0 && isRunning == 1f)
+            animator.SetFloat("isRunning", 1f);
+        else if (moveState != 0 && isRunning == 2f)
+            animator.SetFloat("isRunning", 2f);
+        else
+            animator.SetFloat("isRunning", 0f);
     }
 
     void Rotate()
     {
-        float mouseX = Input.GetAxisRaw("Mouse X") * mouseSpeed * Time.deltaTime;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * mouseSpeed * Time.deltaTime;
+        //float mouseX = Input.GetAxisRaw("Mouse X") * mouseSpeed * Time.deltaTime;
+        //float mouseY = Input.GetAxisRaw("Mouse Y") * mouseSpeed * Time.deltaTime;
+        float mouseX = Input.GetAxisRaw("Mouse X") * mouseSpeed * Time.fixedDeltaTime;
+        float mouseY = Input.GetAxisRaw("Mouse Y") * mouseSpeed * Time.fixedDeltaTime;
 
         yRotation += mouseX;    // 마우스 X축 입력에 따라 수평 회전 값을 조정
         xRotation -= mouseY;    // 마우스 Y축 입력에 따라 수직 회전 값을 조정
@@ -105,7 +125,8 @@ public class Player : MonoBehaviour
 
         // 이동 벡터를 정규화하여 이동 속도와 시간 간격을 곱한 후 현재 위치에 더함
         Vector3 movement = moveVec.normalized * moveSpeed *isRunning;
-        
+        moveState = movement.magnitude;
+
         rb.velocity = movement; //갑작스러운 속도를 내도 벽을 통과하지 못하도록 
     }
 

@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/SMH/Scenes/Main.unity
     guid: 2f0c2a9adde3e7648a644d8f1b95eee6
   - enabled: 1
-    path: Assets/SMH/Scenes/STY_Scene.unity
-    guid: 65b00502dfe5736489f8cabd9b540eda
+    path: Assets/STY/scenes/STY_Scene.unity
+    guid: 1415bd225f749ae4ab80522fe67866b9
   m_configObjects: {}

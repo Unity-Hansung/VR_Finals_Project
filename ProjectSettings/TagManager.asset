@@ -9,6 +9,7 @@ TagManager:
   - colliderShard
   - monster
   - Button
+  - Audio
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - monster
   - playerBody
   - walls
-  - 
+  - MinimapIcon
   - 
   - 
   - 
