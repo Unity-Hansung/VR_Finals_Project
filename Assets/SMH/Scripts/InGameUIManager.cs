@@ -63,6 +63,12 @@ public class InGameUIManager : MonoBehaviour
         currentTimeTxt.text = string.Format("{0:D2}:{1:D2}:{2:D2}", timeSpan.Minutes, timeSpan.Seconds, timeSpan.Milliseconds/10);
     }
 
+    // 현재 진행 시간 반환
+    public float GetCurrentTime()
+    {
+        return currentTime;
+    }
+
     private void OnOptionUI()
     {
         audioManager.PlaySFX(audioManager.SFX);
