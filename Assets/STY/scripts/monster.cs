@@ -18,7 +18,10 @@ public class monster : MonoBehaviour
     NavMeshAgent agent;
 
     bool catchPlayer = true;
-    
+
+    // 민혁의 수정 및 추가 부분
+    InGameUIManager ui;
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -27,6 +30,9 @@ public class monster : MonoBehaviour
     void Start()
     {
         player = FindFirstObjectByType<Player>();
+
+        // 민혁의 수정 및 추가 부분
+        ui = FindFirstObjectByType<InGameUIManager>();
     }
 
     // Update is called once per frame
@@ -79,6 +85,8 @@ public class monster : MonoBehaviour
             catchPlayer = false;
             Debug.Log("몬스터가 플레이어를 잡았습니다");
 
+            // 민혁의 수정 및 추가 부분
+            StartCoroutine(ui.OnGameoverUI());
         }
     }
 }

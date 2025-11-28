@@ -8,6 +8,8 @@ public class InGameUIManager : MonoBehaviour
 {
     AudioManager audioManager;
     [SerializeField] GameObject optionUI;
+    [SerializeField] GameObject GameUI;
+    [SerializeField] GameObject GameoverUI;
 
     bool isOnOption = false;
 
@@ -100,5 +102,14 @@ public class InGameUIManager : MonoBehaviour
         SceneManager.LoadScene("Main");
 
         Time.timeScale = 1f;
+    }
+
+    // 게임오버 시 호출
+    public IEnumerator OnGameoverUI()
+    {
+        GameUI.SetActive(false);
+        yield return new WaitForSeconds(2f);
+        Time.timeScale = 0f;
+        GameoverUI.SetActive(true);
     }
 }
