@@ -22,8 +22,14 @@ public class Player : MonoBehaviour
     [Header("MouseControl")]
     [SerializeField] float warmupTime = 0.2f;
 
+    [Header("Particle System")]
+    [SerializeField] ParticleSystem speedUP;
+
     float yRotation;
     float xRotation;
+
+    float mouseX;
+    float mouseY;
 
     float isRunning = 1.0f;
 
@@ -55,25 +61,31 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        
         Move();
+        /*
         if (warmupTime > 0.0f) //마우스 시작후 돌아가는거 방지
         {
             warmupTime -= Time.fixedDeltaTime;
             return;
         }
         Rotate();
+        */
     }
 
     private void Update()
     {
-        /*
+        
         if(warmupTime > 0.0f) //마우스 시작후 돌아가는거 방지
         {
             warmupTime -= Time.deltaTime;
             return;
         }
         Rotate();
-        */
+        
+        h = Input.GetAxisRaw("Horizontal"); // 수평 이동 입력 값
+        v = Input.GetAxisRaw("Vertical");   // 수직 이동 입력 값
+
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
@@ -93,31 +105,35 @@ public class Player : MonoBehaviour
         if (moveState != 0 && isRunning == 1f)
             animator.SetFloat("isRunning", 1f);
         else if (moveState != 0 && isRunning == 2f)
+        {
             animator.SetFloat("isRunning", 2f);
+            speedUP.Play();
+        }
         else
             animator.SetFloat("isRunning", 0f);
     }
 
+
+
     void Rotate()
     {
-        //float mouseX = Input.GetAxisRaw("Mouse X") * mouseSpeed * Time.deltaTime;
-        //float mouseY = Input.GetAxisRaw("Mouse Y") * mouseSpeed * Time.deltaTime;
-        float mouseX = Input.GetAxisRaw("Mouse X") * mouseSpeed * Time.fixedDeltaTime;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * mouseSpeed * Time.fixedDeltaTime;
+        mouseX = Input.GetAxisRaw("Mouse X") * mouseSpeed * Time.deltaTime;
+        mouseY = Input.GetAxisRaw("Mouse Y") * mouseSpeed * Time.deltaTime;
+        //float mouseX = Input.GetAxisRaw("Mouse X") * mouseSpeed * Time.fixedDeltaTime;
+        //float mouseY = Input.GetAxisRaw("Mouse Y") * mouseSpeed * Time.fixedDeltaTime;
 
         yRotation += mouseX;    // 마우스 X축 입력에 따라 수평 회전 값을 조정
-        xRotation -= mouseY;    // 마우스 Y축 입력에 따라 수직 회전 값을 조정
+        //xRotation -= mouseY;    // 마우스 Y축 입력에 따라 수직 회전 값을 조정
 
-        xRotation = Mathf.Clamp(xRotation, -70f, 20f);  // 수직 회전 값을 -90도에서 90도 사이로 제한
+        //xRotation = Mathf.Clamp(xRotation, -70f, 20f);  // 수직 회전 값을 -90도에서 90도 사이로 제한
 
-        cam.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0); // 카메라의 회전을 조절
+        //cam.transform.rotation = Quaternion.Euler(0, yRotation, 0); // 카메라의 회전을 조절
         transform.rotation = Quaternion.Euler(0, yRotation, 0);             // 플레이어 캐릭터의 회전을 조절
     }
 
     void Move()
     {
-        h = Input.GetAxisRaw("Horizontal"); // 수평 이동 입력 값
-        v = Input.GetAxisRaw("Vertical");   // 수직 이동 입력 값
+        
 
         // 입력에 따라 이동 방향 벡터 계산
         //좌우 이동 계상(근데 이러면 대각선 방향으로 더 멀리 계산됨 -> 정규화 사용)
@@ -127,7 +143,7 @@ public class Player : MonoBehaviour
         Vector3 movement = moveVec.normalized * moveSpeed *isRunning;
         moveState = movement.magnitude;
 
-        rb.velocity = movement; //갑작스러운 속도를 내도 벽을 통과하지 못하도록 
+        rb.velocity = new Vector3(movement.x, rb.velocity.y,movement.z); //갑작스러운 속도를 내도 벽을 통과하지 못하도록 
     }
 
     public void setRunning(float isRunning)

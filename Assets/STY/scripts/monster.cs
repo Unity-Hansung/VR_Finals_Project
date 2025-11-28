@@ -10,14 +10,14 @@ public class monster : MonoBehaviour
     [SerializeField] GameObject monCam;
 
     [Header("playerRender OFF")]
-    [SerializeField] Renderer playerRenderer;
-    [SerializeField] Renderer playerArm1;
-    [SerializeField] Renderer playerArm2;
+    [SerializeField] GameObject playerRenderer;
 
+    
     Player player;
     NavMeshAgent agent;
 
     bool catchPlayer = true;
+    
     
     private void Awake()
     {
@@ -32,6 +32,7 @@ public class monster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //몬스터 두 마리 중 먼저 플레이어와 trigger 닿은쪽만 활동 할 수 있도록 
         if(catchPlayer)
             agent.SetDestination(player.transform.position);
     }
@@ -41,42 +42,26 @@ public class monster : MonoBehaviour
         
         if(other.gameObject.CompareTag("Player"))
         {
-               
-            GameObject[] allMonsters = GameObject.FindGameObjectsWithTag("monster");
+            
+            GameObject[] monsters = GameObject.FindGameObjectsWithTag("monster");
 
-            Debug.Log("monster caught Player!");
-            foreach(GameObject monster in allMonsters)
+            foreach (GameObject monster in monsters)
             {
                 if(monster != this.gameObject)
                 {
                     monster.SetActive(false);
                 }
             }
-            if(playerRenderer != null)
-            {
-                playerRenderer.enabled = false;
-            }
+            
+            //플레이어의 렌더링 부분 비활성화
+            playerRenderer.SetActive(false);
+            //플레이어 스크립트 비활성화
+            player.enabled = false;
+           //몬스터 시네머신 카메라 활성화
+            monCam.SetActive(true);
 
-            if(playerArm1 != null)
-            {
-                playerArm1.enabled = false;
-            }
-
-            if(playerArm2 != null)
-            {
-                playerArm2.enabled = false;
-            }
-
-            if(player != null)
-            {
-                player.enabled = false;
-            }
-
-            if(monCam != null)
-            {
-                monCam.SetActive(true);
-            }
             catchPlayer = false;
+
             Debug.Log("몬스터가 플레이어를 잡았습니다");
 
         }
