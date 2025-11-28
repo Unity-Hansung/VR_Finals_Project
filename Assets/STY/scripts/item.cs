@@ -11,12 +11,18 @@ public class item : MonoBehaviour
     [SerializeField] float increaseRunning = 2f;
     [SerializeField] float runningCoolTime = 0.5f;
     [SerializeField] float ignoreMonsterTime = 3f;
-    
+
+    // 민혁의 수정 및 추가 부분
+    InGameUIManager ui;
+
     // Start is called before the first frame update
     void Start()
     {
         gm = FindFirstObjectByType<GameManager>(); 
         player = FindFirstObjectByType<Player>();
+        
+        // 민혁의 수정 및 추가 부분
+        ui=FindFirstObjectByType<InGameUIManager>();
     }
 
     // Update is called once per frame
@@ -35,6 +41,9 @@ public class item : MonoBehaviour
             gm.AddScore(scorePlus);
             Destroy(other.gameObject);
             Debug.Log(gm.getScore());
+
+            // 민혁의 수정 및 추가 부분
+            ui.DecreaseShardCount();
         }
         //추가 기능 : 이속추가,충돌 무시 아이템 기능
         else if(other.CompareTag("speedShard"))

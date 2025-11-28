@@ -17,8 +17,10 @@ public class monster : MonoBehaviour
     NavMeshAgent agent;
 
     bool catchPlayer = true;
-    
-    
+
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½Îºï¿½
+    InGameUIManager ui;
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -27,12 +29,15 @@ public class monster : MonoBehaviour
     void Start()
     {
         player = FindFirstObjectByType<Player>();
+
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½Îºï¿½
+        ui = FindFirstObjectByType<InGameUIManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //¸ó½ºÅÍ µÎ ¸¶¸® Áß ¸ÕÀú ÇÃ·¹ÀÌ¾î¿Í trigger ´êÀºÂÊ¸¸ È°µ¿ ÇÒ ¼ö ÀÖµµ·Ï 
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ trigger ï¿½ï¿½ï¿½ï¿½ï¿½Ê¸ï¿½ È°ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½Öµï¿½ï¿½ï¿½ 
         if(catchPlayer)
             agent.SetDestination(player.transform.position);
     }
@@ -53,17 +58,19 @@ public class monster : MonoBehaviour
                 }
             }
             
-            //ÇÃ·¹ÀÌ¾îÀÇ ·»´õ¸µ ºÎºÐ ºñÈ°¼ºÈ­
+            //ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Îºï¿½ ï¿½ï¿½È°ï¿½ï¿½È­
             playerRenderer.SetActive(false);
-            //ÇÃ·¹ÀÌ¾î ½ºÅ©¸³Æ® ºñÈ°¼ºÈ­
+            //ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½Å©ï¿½ï¿½Æ® ï¿½ï¿½È°ï¿½ï¿½È­
             player.enabled = false;
-           //¸ó½ºÅÍ ½Ã³×¸Ó½Å Ä«¸Þ¶ó È°¼ºÈ­
+           //ï¿½ï¿½ï¿½ï¿½ ï¿½Ã³×¸Ó½ï¿½ Ä«ï¿½Þ¶ï¿½ È°ï¿½ï¿½È­
             monCam.SetActive(true);
 
             catchPlayer = false;
 
-            Debug.Log("¸ó½ºÅÍ°¡ ÇÃ·¹ÀÌ¾î¸¦ Àâ¾Ò½À´Ï´Ù");
+            Debug.Log("ï¿½ï¿½ï¿½Í°ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾î¸¦ ï¿½ï¿½Ò½ï¿½ï¿½Ï´ï¿½");
 
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½Îºï¿½
+            StartCoroutine(ui.OnGameoverUI());
         }
     }
 }
