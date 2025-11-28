@@ -75,6 +75,10 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if(isRunning >= 1.5f)
+        {
+            speedUP.Play();
+        }
         
         if(warmupTime > 0.0f) //마우스 시작후 돌아가는거 방지
         {
@@ -107,7 +111,7 @@ public class Player : MonoBehaviour
         else if (moveState != 0 && isRunning == 2f)
         {
             animator.SetFloat("isRunning", 2f);
-            speedUP.Play();
+            
         }
         else
             animator.SetFloat("isRunning", 0f);

@@ -49,19 +49,15 @@ public class item : MonoBehaviour
         else if(other.CompareTag("speedShard"))
         {
             other.enabled = false;
-            gm.AddScore(scorePlus);
             Destroy (other.gameObject);
             player.ApplySpeed(increaseRunning, runningCoolTime);
-            Debug.Log(gm.getScore());
         }//원래 속도로 돌아오게끔
         else if(other.CompareTag("colliderShard"))
         {
             other.enabled = false;
-            gm.AddScore(scorePlus);
             Destroy (other.gameObject);
             player.ApplySpeed(increaseRunning,runningCoolTime);
             player.StartCoroutine(player.throughMonster(ignoreMonsterTime));
-            Debug.Log(gm.getScore());
         }
     }
 }
