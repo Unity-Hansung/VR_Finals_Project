@@ -110,6 +110,8 @@ public class InGameUIManager : MonoBehaviour
         GameUI.SetActive(false);
         yield return new WaitForSeconds(2f);
         Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         GameoverUI.SetActive(true);
     }
 }
