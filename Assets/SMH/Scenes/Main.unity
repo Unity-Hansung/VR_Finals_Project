@@ -4264,6 +4264,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5430707039516472515, guid: 06e65f03e08e0fa458ad2d8a006dea15, type: 3}
+      propertyPath: gameover
+      value: 
+      objectReference: {fileID: 8300000, guid: 5739dd2745989ea4ca089b0e8209ea13, type: 3}
+    - target: {fileID: 5430707039516472515, guid: 06e65f03e08e0fa458ad2d8a006dea15, type: 3}
+      propertyPath: basicShard
+      value: 
+      objectReference: {fileID: 8300000, guid: 1e59606e9812a244191d5c1e00fa6707, type: 3}
+    - target: {fileID: 5430707039516472515, guid: 06e65f03e08e0fa458ad2d8a006dea15, type: 3}
+      propertyPath: colliShard
+      value: 
+      objectReference: {fileID: 8300000, guid: 4a547df72dc07ba429fca03290565d75, type: 3}
+    - target: {fileID: 5430707039516472515, guid: 06e65f03e08e0fa458ad2d8a006dea15, type: 3}
+      propertyPath: spawnEnemy
+      value: 
+      objectReference: {fileID: 8300000, guid: 5c2051862cf4eee47b80727cb7595f8b, type: 3}
+    - target: {fileID: 5430707039516472515, guid: 06e65f03e08e0fa458ad2d8a006dea15, type: 3}
+      propertyPath: speedShard
+      value: 
+      objectReference: {fileID: 8300000, guid: 39758b339fca58d44b75ab174361de36, type: 3}
+    - target: {fileID: 5430707039516472515, guid: 06e65f03e08e0fa458ad2d8a006dea15, type: 3}
+      propertyPath: leverSwitch
+      value: 
+      objectReference: {fileID: 8300000, guid: 235fbfb1e69a8e647ba504809e4722a3, type: 3}
     - target: {fileID: 8306736963253402237, guid: 06e65f03e08e0fa458ad2d8a006dea15, type: 3}
       propertyPath: m_Name
       value: AudioManager

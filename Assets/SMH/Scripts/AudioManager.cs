@@ -17,6 +17,12 @@ public class AudioManager : MonoBehaviour
     [Header("-----Audio Clip")]
     public AudioClip Bgm;
     public AudioClip SFX;
+    public AudioClip gameover;
+    public AudioClip basicShard;
+    public AudioClip speedShard;
+    public AudioClip colliShard;
+    public AudioClip leverSwitch;
+    public AudioClip spawnEnemy;
 
     private void Awake()
     {

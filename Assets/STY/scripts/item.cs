@@ -13,6 +13,7 @@ public class item : MonoBehaviour
     [SerializeField] float ignoreMonsterTime = 3f;
 
     // 민혁의 수정 및 추가 부분
+    AudioManager audioManager;
     InGameUIManager ui;
 
     // Start is called before the first frame update
@@ -23,6 +24,7 @@ public class item : MonoBehaviour
         
         // 민혁의 수정 및 추가 부분
         ui=FindFirstObjectByType<InGameUIManager>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
@@ -44,6 +46,7 @@ public class item : MonoBehaviour
 
             // 민혁의 수정 및 추가 부분
             ui.DecreaseShardCount();
+            audioManager.PlaySFX(audioManager.basicShard);
         }
         //추가 기능 : 이속추가,충돌 무시 아이템 기능
         else if(other.CompareTag("speedShard"))
@@ -51,6 +54,9 @@ public class item : MonoBehaviour
             other.enabled = false;
             Destroy (other.gameObject);
             player.ApplySpeed(increaseRunning, runningCoolTime);
+
+            // 민혁의 수정 및 추가 부분
+            audioManager.PlaySFX(audioManager.speedShard);
         }//원래 속도로 돌아오게끔
         else if(other.CompareTag("colliderShard"))
         {
@@ -58,6 +64,9 @@ public class item : MonoBehaviour
             Destroy (other.gameObject);
             player.ApplySpeed(increaseRunning,runningCoolTime);
             player.StartCoroutine(player.throughMonster(ignoreMonsterTime));
+
+            // 민혁의 수정 및 추가 부분
+            audioManager.PlaySFX(audioManager.colliShard);
         }
     }
 }
