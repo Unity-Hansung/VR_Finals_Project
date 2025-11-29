@@ -16,7 +16,8 @@ public class item : MonoBehaviour
     [SerializeField] ParticleSystem speedShard;
     [SerializeField] ParticleSystem colliderShard;
 
-    // ¹ÎÇõÀÇ ¼öÁ¤ ¹× Ãß°¡ ºÎºÐ
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½Îºï¿½
+    AudioManager audioManager;
     InGameUIManager ui;
 
     // Start is called before the first frame update
@@ -25,8 +26,9 @@ public class item : MonoBehaviour
         gm = FindFirstObjectByType<GameManager>(); 
         player = FindFirstObjectByType<Player>();
         
-        // ¹ÎÇõÀÇ ¼öÁ¤ ¹× Ãß°¡ ºÎºÐ
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½Îºï¿½
         ui=FindFirstObjectByType<InGameUIManager>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
@@ -37,26 +39,30 @@ public class item : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //ÇÑ¹ø¾¿ Á¡¼ö°¡ µÎ ¹ø ¿Ã¶ó°¡´Â Çö»ó ¹ß»ý(11/18)
+        //ï¿½Ñ¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½Ã¶ó°¡´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½(11/18)
         if(other.CompareTag("basicShard"))
         {
-            //ÇÃ·¹ÀÌ¾îÀÇ Á¡¼ö°¡ 1Ãß°¡
+            //ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1ï¿½ß°ï¿½
             other.enabled = false;
             gm.AddScore(scorePlus);
             Destroy(other.gameObject);
             Debug.Log(gm.getScore());
 
-            // ¹ÎÇõÀÇ ¼öÁ¤ ¹× Ãß°¡ ºÎºÐ
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½Îºï¿½
             ui.DecreaseShardCount();
+            audioManager.PlaySFX(audioManager.basicShard);
         }
-        //Ãß°¡ ±â´É : ÀÌ¼ÓÃß°¡,Ãæµ¹ ¹«½Ã ¾ÆÀÌÅÛ ±â´É
+        //ï¿½ß°ï¿½ ï¿½ï¿½ï¿½ : ï¿½Ì¼ï¿½ï¿½ß°ï¿½,ï¿½æµ¹ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
         else if(other.CompareTag("speedShard"))
         {
             other.enabled = false;
             Destroy (other.gameObject);
             player.ApplySpeed(increaseRunning, runningCoolTime);
             speedShard.Play();
-        }//¿ø·¡ ¼Óµµ·Î µ¹¾Æ¿À°Ô²û
+
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½Îºï¿½
+            audioManager.PlaySFX(audioManager.speedShard);
+        }//ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ¿ï¿½ï¿½Ô²ï¿½
         else if(other.CompareTag("colliderShard"))
         {
             other.enabled = false;
@@ -64,6 +70,9 @@ public class item : MonoBehaviour
             player.ApplySpeed(increaseRunning,runningCoolTime);
             player.StartCoroutine(player.throughMonster(ignoreMonsterTime));
             colliderShard.Play();
+
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½Îºï¿½
+            audioManager.PlaySFX(audioManager.colliShard);
         }
     }
 }

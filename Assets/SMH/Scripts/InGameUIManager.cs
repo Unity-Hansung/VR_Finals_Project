@@ -113,6 +113,7 @@ public class InGameUIManager : MonoBehaviour
     // 게임오버 시 호출
     public IEnumerator OnGameoverUI()
     {
+        audioManager.PlaySFX(audioManager.gameover);
         GameUI.SetActive(false);
         yield return new WaitForSeconds(2f);
         Time.timeScale = 0f;
