@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] float monster2ComingTime;
 
     InGameUIManager um;
+    AudioManager am;
 
     bool btnCheck = true;
 
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
         finalGate.SetActive(false);
 
         um = FindFirstObjectByType<InGameUIManager>();
+        am = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
@@ -40,6 +42,7 @@ public class GameManager : MonoBehaviour
         if (score >= monsterComingScore1 && !isMonster1Spawned)
         {
             monster1.SetActive(true);
+            am.PlaySFX(am.spawnEnemy);
             isMonster1Spawned=true;
             Debug.Log("monster1 is coming!");
         }
@@ -48,7 +51,8 @@ public class GameManager : MonoBehaviour
           if(btnCheck)
           {
                 monster2.SetActive(true);
-                isMonster2Spawned=true;
+                am.PlaySFX(am.spawnEnemy);
+                isMonster2Spawned =true;
           } 
                 Debug.Log("monster2 is coming!");
         }

@@ -1976,7 +1976,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 358312945}
         m_TargetAssemblyTypeName: InGameUIManager, Assembly-CSharp
         m_MethodName: RestartBtn
         m_Mode: 1
@@ -5937,7 +5937,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 358312945}
         m_TargetAssemblyTypeName: InGameUIManager, Assembly-CSharp
         m_MethodName: ToMainBtn
         m_Mode: 1

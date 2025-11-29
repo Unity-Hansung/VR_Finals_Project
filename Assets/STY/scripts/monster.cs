@@ -19,7 +19,6 @@ public class monster : MonoBehaviour
     bool catchPlayer = true;
 
     // 민혁의 수정 및 추가 부분
-    AudioManager audioManager;
     InGameUIManager ui;
 
     private void Awake()
@@ -33,8 +32,6 @@ public class monster : MonoBehaviour
 
         // 민혁의 수정 및 추가 부분
         ui = FindFirstObjectByType<InGameUIManager>();
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-        audioManager.PlaySFX(audioManager.spawnEnemy);
     }
 
     // Update is called once per frame
