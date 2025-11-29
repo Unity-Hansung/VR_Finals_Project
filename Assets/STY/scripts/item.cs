@@ -12,6 +12,10 @@ public class item : MonoBehaviour
     [SerializeField] float runningCoolTime = 0.5f;
     [SerializeField] float ignoreMonsterTime = 3f;
 
+    [Header("Particle System")]
+    [SerializeField] ParticleSystem speedShard;
+    [SerializeField] ParticleSystem colliderShard;
+
     // 민혁의 수정 및 추가 부분
     InGameUIManager ui;
 
@@ -51,6 +55,7 @@ public class item : MonoBehaviour
             other.enabled = false;
             Destroy (other.gameObject);
             player.ApplySpeed(increaseRunning, runningCoolTime);
+            speedShard.Play();
         }//원래 속도로 돌아오게끔
         else if(other.CompareTag("colliderShard"))
         {
@@ -58,6 +63,7 @@ public class item : MonoBehaviour
             Destroy (other.gameObject);
             player.ApplySpeed(increaseRunning,runningCoolTime);
             player.StartCoroutine(player.throughMonster(ignoreMonsterTime));
+            colliderShard.Play();
         }
     }
 }

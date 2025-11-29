@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] int monsterComingScore1;
     [SerializeField] int monsterComingScore2;
     [SerializeField] int finishScore;
+    [SerializeField] float monster2ComingTime;
+
+    InGameUIManager um;
 
     bool btnCheck = true;
 
@@ -26,22 +29,28 @@ public class GameManager : MonoBehaviour
         monster1.SetActive(false);
         monster2.SetActive(false);
         finalGate.SetActive(false);
+
+        um = FindFirstObjectByType<InGameUIManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(score >= monsterComingScore1 && !isMonster1Spawned)
+       
+        if (score >= monsterComingScore1 && !isMonster1Spawned)
         {
             monster1.SetActive(true);
             isMonster1Spawned=true;
             Debug.Log("monster1 is coming!");
         }
-        if(score >= monsterComingScore2 && btnCheck && !isMonster2Spawned)
+        if(um.GetCurrentTime() >= monster2ComingTime && !isMonster2Spawned)
         {
-            monster2.SetActive(true);
-            isMonster2Spawned=true;
-            Debug.Log("monster2 is coming!");
+          if(btnCheck)
+          {
+                monster2.SetActive(true);
+                isMonster2Spawned=true;
+          } 
+                Debug.Log("monster2 is coming!");
         }
         if(score >= finishScore)
         {

@@ -22,8 +22,7 @@ public class Player : MonoBehaviour
     [Header("MouseControl")]
     [SerializeField] float warmupTime = 0.2f;
 
-    [Header("Particle System")]
-    [SerializeField] ParticleSystem speedUP;
+    
 
     float yRotation;
     float xRotation;
@@ -58,6 +57,7 @@ public class Player : MonoBehaviour
                                                                                                                         
         cam = Camera.main;                          // 메인 카메라를 할당
         
+        
     }
     private void FixedUpdate()
     {
@@ -75,11 +75,6 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if(isRunning >= 1.5f)
-        {
-            speedUP.Play();
-        }
-        
         if(warmupTime > 0.0f) //마우스 시작후 돌아가는거 방지
         {
             warmupTime -= Time.deltaTime;
