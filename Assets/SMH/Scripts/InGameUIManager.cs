@@ -10,6 +10,7 @@ public class InGameUIManager : MonoBehaviour
     [SerializeField] GameObject optionUI;
     [SerializeField] GameObject GameUI;
     [SerializeField] GameObject GameoverUI;
+    [SerializeField] GameObject GameclearUI;
 
     bool isOnOption = false;
 
@@ -18,6 +19,8 @@ public class InGameUIManager : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI currentTimeTxt;
     float currentTime;
+
+    [SerializeField] TextMeshProUGUI recordTimeTxt;
 
     private void Awake()
     {
@@ -44,7 +47,6 @@ public class InGameUIManager : MonoBehaviour
         }
     }
 
-    
     public void DecreaseShardCount()
     {// 현재 샤드 갯수 표시를 -1
         --currentShardCount;
@@ -120,5 +122,18 @@ public class InGameUIManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         GameoverUI.SetActive(true);
+    }
+
+    // 게임 클리어 시 호출
+    public void OnGameclaerUI()
+    {
+        Destroy(GameObject.Find("SceneBGM"));
+        GameUI.SetActive(false);
+        audioManager.PlaySFX(audioManager.gameclear);
+        recordTimeTxt.text = currentTimeTxt.text;
+        Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        GameclearUI.SetActive(true);
     }
 }
