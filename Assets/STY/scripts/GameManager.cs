@@ -75,7 +75,8 @@ public class GameManager : MonoBehaviour
         //ÃÖÁ¾ Á¡¼ö È¹µæ½Ã Å»Ãâ·Î µîÀå
         if(score >= finishScore)
         {
-            switch(gateNumber)
+            am.PlaySFX(am.openDoor);
+            switch (gateNumber)
             {
                 case 1:
                     finalGate1.SetActive(true);
