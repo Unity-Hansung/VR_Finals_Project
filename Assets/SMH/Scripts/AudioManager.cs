@@ -25,6 +25,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip colliShard;
     public AudioClip leverSwitch;
     public AudioClip spawnEnemy;
+    public AudioClip openDoor;
 
     private void Awake()
     {
