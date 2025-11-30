@@ -115,7 +115,8 @@ public class InGameUIManager : MonoBehaviour
     // 게임오버 시 호출
     public IEnumerator OnGameoverUI()
     {
-        audioManager.PlaySFX(audioManager.gameover);
+        audioManager.PlayGameoverBGM();
+        //audioManager.PlaySFX(audioManager.gameover);
         GameUI.SetActive(false);
         yield return new WaitForSeconds(2f);
         Time.timeScale = 0f;
@@ -127,7 +128,7 @@ public class InGameUIManager : MonoBehaviour
     // 게임 클리어 시 호출
     public void OnGameclaerUI()
     {
-        Destroy(GameObject.Find("SceneBGM"));
+        audioManager.PlayGameclearBGM();
         GameUI.SetActive(false);
         audioManager.PlaySFX(audioManager.gameclear);
         recordTimeTxt.text = currentTimeTxt.text;

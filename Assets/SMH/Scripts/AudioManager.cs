@@ -19,6 +19,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip SFX;
     public AudioClip gameover;
     public AudioClip gameclear;
+
     public AudioClip basicShard;
     public AudioClip speedShard;
     public AudioClip colliShard;
@@ -55,6 +56,18 @@ public class AudioManager : MonoBehaviour
             return;
 
         BGMSource.clip = newClip;
+        BGMSource.Play();
+    }
+
+    public void PlayGameoverBGM()
+    {
+        BGMSource.clip = gameover;
+        BGMSource.Play();
+    }
+
+    public void PlayGameclearBGM()
+    {
+        BGMSource.clip = gameclear;
         BGMSource.Play();
     }
 }

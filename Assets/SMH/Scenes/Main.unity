@@ -4269,6 +4269,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 5739dd2745989ea4ca089b0e8209ea13, type: 3}
     - target: {fileID: 5430707039516472515, guid: 06e65f03e08e0fa458ad2d8a006dea15, type: 3}
+      propertyPath: gameclear
+      value: 
+      objectReference: {fileID: 8300000, guid: 9f3788f0c1634eb46a082da39ec58d2d, type: 3}
+    - target: {fileID: 5430707039516472515, guid: 06e65f03e08e0fa458ad2d8a006dea15, type: 3}
       propertyPath: basicShard
       value: 
       objectReference: {fileID: 8300000, guid: 1e59606e9812a244191d5c1e00fa6707, type: 3}
