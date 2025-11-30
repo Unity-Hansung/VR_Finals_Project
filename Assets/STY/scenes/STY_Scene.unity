@@ -15515,8 +15515,8 @@ MonoBehaviour:
   finalGate3: {fileID: 1023295135}
   finalGate4: {fileID: 548316205}
   finishScore: 1
-  monster1ComingTime: 5
-  monster2ComingTime: 10
+  monster1ComingTime: 10
+  monster2ComingTime: 60
 --- !u!4 &1125127667
 Transform:
   m_ObjectHideFlags: 0
@@ -20437,7 +20437,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 358312945}
         m_TargetAssemblyTypeName: InGameUIManager, Assembly-CSharp
         m_MethodName: RestartBtn
         m_Mode: 1
@@ -20750,7 +20750,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 358312945}
         m_TargetAssemblyTypeName: InGameUIManager, Assembly-CSharp
         m_MethodName: ToMainBtn
         m_Mode: 1

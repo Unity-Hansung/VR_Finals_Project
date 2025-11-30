@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
           } 
         }
         //ÃÖÁ¾ Á¡¼ö È¹µæ½Ã Å»Ãâ·Î µîÀå
-        if(score >= finishScore)
+        if(um.GetCurrentShard() == 0)
         {
             //am.PlaySFX(am.openDoor);
             switch (gateNumber)

@@ -71,6 +71,12 @@ public class InGameUIManager : MonoBehaviour
         return currentTime;
     }
 
+    // 현재 남은 샤드 갯수 반환
+    public int GetCurrentShard()
+    {
+        return currentShardCount;
+    }
+
     private void OnOptionUI()
     {
         audioManager.PlaySFX(audioManager.SFX);
@@ -115,10 +121,9 @@ public class InGameUIManager : MonoBehaviour
     // 게임오버 시 호출
     public IEnumerator OnGameoverUI()
     {
-        //audioManager.PlayGameoverBGM();
-        audioManager.PlaySFX(audioManager.gameover);
         GameUI.SetActive(false);
         yield return new WaitForSeconds(2f);
+        audioManager.PlaySFX(audioManager.gameover);
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
