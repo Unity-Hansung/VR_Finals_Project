@@ -10,7 +10,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject monster1;
     [SerializeField] GameObject monster2;
     [Header("Gate")]
-    [SerializeField] GameObject finalGate;
+    [SerializeField] GameObject finalGate1;
+    [SerializeField] GameObject finalGate2;
+    [SerializeField] GameObject finalGate3;
+    [SerializeField] GameObject finalGate4;
 
     //몬스터가 나오는 시간, 최종 관문이 열리는 점수
     [SerializeField] int finishScore;
@@ -23,6 +26,8 @@ public class GameManager : MonoBehaviour
     //버튼이 클릭됐음을 확인하는 변수
     bool btnCheck = true;
 
+    int gateNumber;
+    
     //몬스터의 중복 출현을 막는 변수
     bool isMonster1Spawned = false;
     bool isMonster2Spawned = false;
@@ -32,7 +37,13 @@ public class GameManager : MonoBehaviour
     {
         monster1.SetActive(false);
         monster2.SetActive(false);
-        finalGate.SetActive(false);
+
+        finalGate1.SetActive(false);
+        finalGate2.SetActive(false);
+        finalGate3.SetActive(false);
+        finalGate4.SetActive(false);
+
+        gateNumber= Random.Range(1, 5);
 
         um = FindFirstObjectByType<InGameUIManager>();
         am = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
@@ -64,8 +75,23 @@ public class GameManager : MonoBehaviour
         //최종 점수 획득시 탈출로 등장
         if(score >= finishScore)
         {
-            finalGate.SetActive(true);
-            Debug.Log("final gate open!");
+            switch(gateNumber)
+            {
+                case 1:
+                    finalGate1.SetActive(true);
+                    break;
+                case 2:
+                    finalGate2.SetActive(true);
+                    break;
+                case 3:
+                    finalGate3.SetActive(true);
+                    break;
+                case 4:
+                    finalGate4.SetActive(true);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 655689187832511576}
   - component: {fileID: 7712523446957606493}
   - component: {fileID: 1968806906031002813}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RightGate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 157540145690612174}
   - component: {fileID: 5747341269867734485}
   - component: {fileID: 6212673682653342757}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LeftGate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 797886764304227536}
   - component: {fileID: 1149946782804120186}
   - component: {fileID: 425084594891900959}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: final Gate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 8258698364670570654}
   - component: {fileID: 6797370453887800099}
   - component: {fileID: 8821693364963582387}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GatePosts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
