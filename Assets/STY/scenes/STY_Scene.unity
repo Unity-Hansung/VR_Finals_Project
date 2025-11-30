@@ -14545,7 +14545,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1917251046}
   offset: {x: 0, y: 20, z: 0}
-  rotateWithTarget: 0
+  rotateWithTarget: 1
 --- !u!81 &1078469830
 AudioListener:
   m_ObjectHideFlags: 0
