@@ -18,6 +18,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip Bgm;
     public AudioClip SFX;
     public AudioClip gameover;
+    public AudioClip gameclear;
     public AudioClip basicShard;
     public AudioClip speedShard;
     public AudioClip colliShard;
