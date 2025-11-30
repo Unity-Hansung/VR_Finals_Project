@@ -13860,7 +13860,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1307141778418641414, guid: d326544064994ed4cbd51d16ea9eb95a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.86
+      value: 2.1
       objectReference: {fileID: 0}
     - target: {fileID: 1307141778418641414, guid: d326544064994ed4cbd51d16ea9eb95a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13900,7 +13900,15 @@ PrefabInstance:
       objectReference: {fileID: 1917251047}
     - target: {fileID: 6854905702913448100, guid: d326544064994ed4cbd51d16ea9eb95a, type: 3}
       propertyPath: m_Speed
-      value: 17.25
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6854905702913448100, guid: d326544064994ed4cbd51d16ea9eb95a, type: 3}
+      propertyPath: m_Acceleration
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6854905702913448100, guid: d326544064994ed4cbd51d16ea9eb95a, type: 3}
+      propertyPath: m_AngularSpeed
+      value: 360
       objectReference: {fileID: 0}
     - target: {fileID: 7179519952805991520, guid: d326544064994ed4cbd51d16ea9eb95a, type: 3}
       propertyPath: m_Name
@@ -21638,7 +21646,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1307141778418641414, guid: d326544064994ed4cbd51d16ea9eb95a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.86
+      value: 2.01
       objectReference: {fileID: 0}
     - target: {fileID: 1307141778418641414, guid: d326544064994ed4cbd51d16ea9eb95a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -21676,6 +21684,14 @@ PrefabInstance:
       propertyPath: playerRenderer
       value: 
       objectReference: {fileID: 1917251047}
+    - target: {fileID: 6854905702913448100, guid: d326544064994ed4cbd51d16ea9eb95a, type: 3}
+      propertyPath: m_Speed
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6854905702913448100, guid: d326544064994ed4cbd51d16ea9eb95a, type: 3}
+      propertyPath: m_AngularSpeed
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 7179519952805991520, guid: d326544064994ed4cbd51d16ea9eb95a, type: 3}
       propertyPath: m_Name
       value: Monster (2)
@@ -26429,13 +26445,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -907280319364493647, guid: 39f780a8b8ef2ba45b661110b647174e, type: 3}
+      propertyPath: increaseRunning
+      value: 3.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5082828108240839255, guid: 39f780a8b8ef2ba45b661110b647174e, type: 3}
       propertyPath: button
       value: 
       objectReference: {fileID: 1099604668}
-    - target: {fileID: 5082828108240839255, guid: 39f780a8b8ef2ba45b661110b647174e, type: 3}
-      propertyPath: moveSpeed
-      value: 15
+    - target: {fileID: 5675320907014280908, guid: 39f780a8b8ef2ba45b661110b647174e, type: 3}
+      propertyPath: m_Radius
+      value: 0.36336622
+      objectReference: {fileID: 0}
+    - target: {fileID: 5675320907014280908, guid: 39f780a8b8ef2ba45b661110b647174e, type: 3}
+      propertyPath: m_Center.x
+      value: -0.002474904
+      objectReference: {fileID: 0}
+    - target: {fileID: 5675320907014280908, guid: 39f780a8b8ef2ba45b661110b647174e, type: 3}
+      propertyPath: m_Center.z
+      value: 0.121368885
       objectReference: {fileID: 0}
     - target: {fileID: 6664950594652475101, guid: 39f780a8b8ef2ba45b661110b647174e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -26480,10 +26508,6 @@ PrefabInstance:
     - target: {fileID: 8461294656874714817, guid: 39f780a8b8ef2ba45b661110b647174e, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8833003787263137637, guid: 39f780a8b8ef2ba45b661110b647174e, type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 1535
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -29308,6 +29332,10 @@ PrefabInstance:
     - target: {fileID: 4083561711472219576, guid: e38563a73e585974693d77743ec6d6f3, type: 3}
       propertyPath: m_Name
       value: Underground
+      objectReference: {fileID: 0}
+    - target: {fileID: 4428717942023986921, guid: e38563a73e585974693d77743ec6d6f3, type: 3}
+      propertyPath: m_VoxelSize
+      value: 0.083333336
       objectReference: {fileID: 0}
     - target: {fileID: 4428717942023986921, guid: e38563a73e585974693d77743ec6d6f3, type: 3}
       propertyPath: m_NavMeshData
