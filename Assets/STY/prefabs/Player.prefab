@@ -159,7 +159,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 511
+    m_Bits: 1535
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -9930,10 +9930,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.48473495
+  m_Radius: 0.55298775
   m_Height: 1.9679198
   m_Direction: 1
-  m_Center: {x: -0.0024749043, y: -0.014144421, z: 8.287815e-12}
+  m_Center: {x: -0.002474904, y: 0.14000003, z: -0.068252765}
 --- !u!54 &1293267807856874557
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9973,7 +9973,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f58f1c1c81e4b140b85d7342f6b31cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 15
   mouseSpeed: 500
   button: {fileID: 0}
   warmupTime: 0.2
