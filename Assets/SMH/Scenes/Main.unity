@@ -4267,7 +4267,11 @@ PrefabInstance:
     - target: {fileID: 5430707039516472515, guid: 06e65f03e08e0fa458ad2d8a006dea15, type: 3}
       propertyPath: gameover
       value: 
-      objectReference: {fileID: 8300000, guid: 5739dd2745989ea4ca089b0e8209ea13, type: 3}
+      objectReference: {fileID: 8300000, guid: bc5c60b0b967f5a40a544a1a4d69db55, type: 3}
+    - target: {fileID: 5430707039516472515, guid: 06e65f03e08e0fa458ad2d8a006dea15, type: 3}
+      propertyPath: openDoor
+      value: 
+      objectReference: {fileID: 8300000, guid: 51f5213a617f7254d85a2cf088cf2baf, type: 3}
     - target: {fileID: 5430707039516472515, guid: 06e65f03e08e0fa458ad2d8a006dea15, type: 3}
       propertyPath: gameclear
       value: 
@@ -4283,7 +4287,7 @@ PrefabInstance:
     - target: {fileID: 5430707039516472515, guid: 06e65f03e08e0fa458ad2d8a006dea15, type: 3}
       propertyPath: spawnEnemy
       value: 
-      objectReference: {fileID: 8300000, guid: 5c2051862cf4eee47b80727cb7595f8b, type: 3}
+      objectReference: {fileID: 8300000, guid: 37a2f2e75ddc1f54f834b52a8990e3e8, type: 3}
     - target: {fileID: 5430707039516472515, guid: 06e65f03e08e0fa458ad2d8a006dea15, type: 3}
       propertyPath: speedShard
       value: 
