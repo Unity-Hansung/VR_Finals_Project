@@ -5424,10 +5424,9 @@ MonoBehaviour:
   monster1: {fileID: 7179519953857411216}
   monster2: {fileID: 7179519952005024110}
   finalGate: {fileID: 287550875}
-  monsterComingScore1: 2
-  monsterComingScore2: 4
   finishScore: 5
-  monster2ComingTime: 5
+  monster1ComingTime: 5
+  monster2ComingTime: 10
 --- !u!4 &1125127667
 Transform:
   m_ObjectHideFlags: 0
@@ -5732,10 +5731,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3270059595471664112, guid: d326544064994ed4cbd51d16ea9eb95a, type: 3}
-      propertyPath: otherMonster
-      value: 
-      objectReference: {fileID: 7179519952005024110}
     - target: {fileID: 3270059595471664112, guid: d326544064994ed4cbd51d16ea9eb95a, type: 3}
       propertyPath: playerRenderer
       value: 
