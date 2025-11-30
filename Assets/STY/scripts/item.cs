@@ -42,7 +42,7 @@ public class item : MonoBehaviour
         //�ѹ��� ������ �� �� �ö󰡴� ���� �߻�(11/18)
         if(other.CompareTag("basicShard"))
         {
-            //�÷��̾��� ������ 1�߰�
+            //점수 증가 샤드
             other.enabled = false;
             gm.AddScore(scorePlus);
             Destroy(other.gameObject);
@@ -55,6 +55,7 @@ public class item : MonoBehaviour
         //�߰� ��� : �̼��߰�,�浹 ���� ������ ���
         else if(other.CompareTag("speedShard"))
         {
+            //속도 증가 샤드
             other.enabled = false;
             Destroy (other.gameObject);
             player.ApplySpeed(increaseRunning, runningCoolTime);
@@ -65,6 +66,7 @@ public class item : MonoBehaviour
         }//���� �ӵ��� ���ƿ��Բ�
         else if(other.CompareTag("colliderShard"))
         {
+            //속도 증가 및 괴물을 통과할 수 있는 샤드
             other.enabled = false;
             Destroy (other.gameObject);
             player.ApplySpeed(increaseRunning,runningCoolTime);

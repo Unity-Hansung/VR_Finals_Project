@@ -37,7 +37,7 @@ public class monster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //���� �� ���� �� ���� �÷��̾�� trigger �����ʸ� Ȱ�� �� �� �ֵ��� 
+        //플레이어의 위치를 쫓아감 
         if(catchPlayer)
             agent.SetDestination(player.transform.position);
     }
@@ -47,7 +47,7 @@ public class monster : MonoBehaviour
         
         if(other.gameObject.CompareTag("Player"))
         {
-            
+            //괴물 두 마리중 한 마리가 플레이어와 먼저 충돌했을때 나머지 괴물을 안보이게
             GameObject[] monsters = GameObject.FindGameObjectsWithTag("monster");
 
             foreach (GameObject monster in monsters)
@@ -58,11 +58,11 @@ public class monster : MonoBehaviour
                 }
             }
             
-            //�÷��̾��� ������ �κ� ��Ȱ��ȭ
+            //플레이어의 모습이 카메라에 안 잡히도록
             playerRenderer.SetActive(false);
-            //�÷��̾� ��ũ��Ʈ ��Ȱ��ȭ
+           
             player.enabled = false;
-           //���� �ó׸ӽ� ī�޶� Ȱ��ȭ
+           //몬스터의 시네머신 작동
             monCam.SetActive(true);
 
             catchPlayer = false;
